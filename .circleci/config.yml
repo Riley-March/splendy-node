@@ -1,8 +1,7 @@
 version: 2
 jobs:
     build:
-        docker:
-            - image: circleci/golang:1.13-alpine
+        machine: true
         working_directory: ~/node
         environment:
             IMAGE_NAME: ramtek/splendy
