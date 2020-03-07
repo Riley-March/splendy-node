@@ -2,7 +2,7 @@ version: 2
 jobs:
     build:
         docker:
-            - image: buildpack-deps:trusty
+            - image: circleci/golang:1.13-alpine
         working_directory: ~/node
         environment:
             IMAGE_NAME: ramtek/splendy
