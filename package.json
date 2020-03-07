@@ -1,0 +1,29 @@
+{
+  "name": "splendy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Riley-March/Splendy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Riley-March/Splendy/issues"
+  },
+  "homepage": "https://github.com/Riley-March/Splendy#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "cheerio": "^1.0.0-rc.3",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.3",
+    "web-push": "^3.4.3",
+    "ws": "^7.2.1"
+  }
+}
