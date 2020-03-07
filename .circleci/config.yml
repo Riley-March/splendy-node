@@ -1,0 +1,41 @@
+version: 2
+jobs:
+    build:
+        docker:
+            - image: cibuilds/node:latest
+        working_directory: ~/node
+        environment:
+            IMAGE_NAME: ramtek/splendy
+        steps:
+            - checkout
+            - setup_remote_docker
+            - run:
+                name: Build Docker image
+                command: docker build -t $IMAGE_NAME:latest .
+            - run:
+                name: Publish Docker Image to Docker Hub
+                command: |
+                    echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+                    docker push $IMAGE_NAME:latest
+    deploy:
+        machine:
+            enabled: true
+        steps:
+            - add_ssh_keys:
+                fingerprints:
+                    - "67:e9:e7:9a:14:67:16:1a:07:30:ad:6b:fd:03:c4:35"
+            - run: 
+                name: Deploy Over SSH
+                command: |
+                    ssh -v $DROPLET_USER@$DROPLET_IP "~/deploy/deploy_splendy.sh"
+workflows:
+    version: 2
+    build-and-deploy:
+        jobs:
+            - build
+            - deploy:
+                requires:
+                    - build
+                filters:
+                    branches:
+                        only: master
