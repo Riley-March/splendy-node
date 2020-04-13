@@ -14,6 +14,7 @@ jobs:
                     echo "MONGO_USER=$MONGO_USER" >> .env
                     echo "MONGO_PASS=$MONGO_PASS" >> .env
                     echo "MONGO_DB=$MONGO_DB" >> .env
+                    echo "MONGO_HOST=$MONGO_HOST" >> .env
             - run:
                 name: Build Docker image
                 command: docker build -t $IMAGE_NAME:latest .
@@ -28,7 +29,7 @@ jobs:
         steps:
             - add_ssh_keys:
                 fingerprints:
-                    - "67:e9:e7:9a:14:67:16:1a:07:30:ad:6b:fd:03:c4:35"
+                    - "3e:73:c2:e6:e6:2f:2e:9b:5a:37:68:c0:49:f9:31:1e"
             - run: 
                 name: Deploy Over SSH
                 command: |
