@@ -9,10 +9,6 @@ const ticket_schema = new Schema({
     quantity: {
         type: Number,
         required: true
-    },
-    timestamp: {
-        type: Number,
-        required: true
     }
 });
 
