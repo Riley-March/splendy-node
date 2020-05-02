@@ -1,0 +1,38 @@
+name: Build
+
+on:
+  push:
+    branches: 
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Publish to Github Packages
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: riley-march/splendy-web/splendy-web
+        registry: docker.pkg.github.com
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        dockerfile: Dockerfile
+        tags: latest
+    - name: Deploy app on digital ocean
+      uses: appleboy/ssh-action@master
+      env:
+          GITHUB_USERNAME: ${{ secrets.USERNAME }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        password: ${{ secrets.SSH_PASSWORD }}
+        port: ${{ secrets.PORT }}
+        envs: GITHUB_USERNAME, GITHUB_TOKEN
+        script: |
+          docker login docker.pkg.github.com -u $GITHUB_USERNAME -p $GITHUB_TOKEN
+          docker pull docker.pkg.github.com/riley-march/splendy/splendy:latest
+          docker stop splendy
+          docker rm splendy
+          docker run -d -p 2000:80 --name splendy docker.pkg.github.com/riley-march/splendy/splendy:latest
