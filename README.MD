@@ -1,7 +1,6 @@
 # Splendy - *Splendour In The Grass Ticket Tracker*
 
-![Build](https://github.com/Riley-March/Splendy-web/workflows/Build/badge.svg)
-![Test](https://github.com/Riley-March/Splendy-web/workflows/Test/badge.svg)
+![Build](https://github.com/Riley-March/Splendy/workflows/Build/badge.svg)
 
 ## [Live Demo](https://splendy.ramtek.dev)
 
