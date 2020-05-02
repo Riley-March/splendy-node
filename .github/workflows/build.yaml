@@ -13,7 +13,7 @@ jobs:
     - name: Publish to Github Packages
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        name: riley-march/splendy-web/splendy-web
+        name: riley-march/splendy/splendy
         registry: docker.pkg.github.com
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.GITHUB_TOKEN }}
