@@ -4,9 +4,20 @@ const create_event_stats = (event_name, event_tickets) => {
     const tickets = event_tickets.map(ticket => {
         return {
             name: ticket.name,
-            daily: 0,
-            weekly: 0,
-            alltime: 0
+            stats: [
+                {
+                    type: 'Daily',
+                    quantity: 0
+                },
+                {
+                    type: 'Weekly',
+                    quantity: 0
+                },
+                {
+                    type: 'Alltime',
+                    quantity: 0
+                }
+            ]
         }
     });
     const event_stats = new Stats({
