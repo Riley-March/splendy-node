@@ -10,19 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Add Environment File
-      env:
-        MONGO_USER: ${{ secrets.MONGO_USER }}
-        MONGO_PASS: ${{ secrets.MONGO_PASS }}
-        MONGO_DB: ${{ secrets.MONGO_DB }}
-        MONGO_HOST: ${{ secrets.MONGO_HOST }}
-      with:
-        script: |
-          touch .env
-          echo "MONGO_USER=$MONGO_USER" >> .env
-          echo "MONGO_PASS=$MONGO_PASS" >> .env
-          echo "MONGO_DB=$MONGO_DB" >> .env
-          echo "MONGO_HOST=$MONGO_HOST" >> .env
+    - shell: bash
+    env:
+      MONGO_USER: ${{ secrets.MONGO_USER }}
+      MONGO_PASS: ${{ secrets.MONGO_PASS }}
+      MONGO_DB: ${{ secrets.MONGO_DB }}
+      MONGO_HOST: ${{ secrets.MONGO_HOST }}
+    run: |
+      touch .env
+      echo "MONGO_USER=$MONGO_USER" >> .env
+      echo "MONGO_PASS=$MONGO_PASS" >> .env
+      echo "MONGO_DB=$MONGO_DB" >> .env
+      echo "MONGO_HOST=$MONGO_HOST" >> .env
     - name: Publish to Github Packages
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
