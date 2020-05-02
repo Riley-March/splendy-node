@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+//Tickets schema
 const tickets_schema = new Schema({
     event_name: {
         type: String,
