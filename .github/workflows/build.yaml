@@ -17,11 +17,11 @@ jobs:
       MONGO_DB: ${{ secrets.MONGO_DB }}
       MONGO_HOST: ${{ secrets.MONGO_HOST }}
     run: |
-      touch .env
-      echo "MONGO_USER=$MONGO_USER" >> .env
-      echo "MONGO_PASS=$MONGO_PASS" >> .env
-      echo "MONGO_DB=$MONGO_DB" >> .env
-      echo "MONGO_HOST=$MONGO_HOST" >> .env
+        touch .env
+        echo "MONGO_USER=$MONGO_USER" >> .env
+        echo "MONGO_PASS=$MONGO_PASS" >> .env
+        echo "MONGO_DB=$MONGO_DB" >> .env
+        echo "MONGO_HOST=$MONGO_HOST" >> .env
     - name: Publish to Github Packages
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
