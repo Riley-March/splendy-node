@@ -53,7 +53,7 @@ mongoose.connect(
     { useNewUrlParser: true, useUnifiedTopology: true }
     ).then(() => {
         server.listen(5000);
-        console.log('Listening on port 5000');
+        console.log('Listening on Port 5000');
     }).catch(err => {
         console.log(err);
 });
