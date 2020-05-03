@@ -47,4 +47,4 @@ jobs:
           docker pull docker.pkg.github.com/riley-march/splendy/splendy:latest
           docker stop splendy
           docker rm splendy
-          docker run -d -p 2000:80 --name splendy docker.pkg.github.com/riley-march/splendy/splendy:latest
+          docker run -d -p 2000:5000 --name splendy docker.pkg.github.com/riley-march/splendy/splendy:latest
