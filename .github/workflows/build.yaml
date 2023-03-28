@@ -23,7 +23,7 @@ jobs:
         echo "MONGO_DB=$MONGO_DB" >> .env
         echo "MONGO_HOST=$MONGO_HOST" >> .env
     - name: Publish to Github Packages
-      uses: elgohr/Publish-Docker-Github-Action@master
+      uses: elgohr/Publish-Docker-Github-Action@v5
       with:
         name: riley-march/splendy/splendy
         registry: docker.pkg.github.com
